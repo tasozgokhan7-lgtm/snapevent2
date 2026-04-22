@@ -16,17 +16,37 @@ export default function ContactSection() {
     e.preventDefault()
     if (!form.name || !form.email_or_phone) { setError('Ad ve iletişim bilgisi zorunludur.'); return }
     setLoading(true); setError('')
-    const supabase = createClient()
-    const { error: err } = await supabase.from('contact_requests').insert({
-      name: form.name,
-      email_or_phone: form.email_or_phone,
-      event_type: form.event_type || null,
-      event_date: form.event_date || null,
-      note: form.note || null,
-    })
-    setLoading(false)
-    if (err) { setError('Bir hata oluştu. Lütfen tekrar deneyin.') }
-    else { setSuccess(true) }
+
+    try {
+      // 1. Supabase'e kaydet
+      const supabase = createClient()
+      await supabase.from('contact_requests').insert({
+        name: form.name,
+        email_or_phone: form.email_or_phone,
+        event_type: form.event_type || null,
+        event_date: form.event_date || null,
+        note: form.note || null,
+      })
+
+      // 2. E-posta bildirimi gönder
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+
+      if (!res.ok) {
+        const data = await res.json()
+        // E-posta hatası critical değil — yine de başarı sayılır, sadece logla
+        console.warn('E-posta gönderilemedi:', data.error)
+      }
+
+      setSuccess(true)
+    } catch (err) {
+      setError('Bir hata oluştu. Lütfen tekrar deneyin.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (

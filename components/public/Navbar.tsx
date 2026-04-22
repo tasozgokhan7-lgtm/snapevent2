@@ -31,10 +31,10 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <Image src="/logo.png" alt="Hatıra Topla" width={40} height={40} className="rounded-xl group-hover:scale-105 transition-transform" />
+          <Link href="/" className="flex items-center gap-3 group">
+            <Image src="/logo.png" alt="Hatıra Topla" width={56} height={56} className="rounded-xl group-hover:scale-105 transition-transform object-contain" unoptimized />
             <span className="text-xl font-bold text-slate-900">
-              Anı<span className="gradient-text">Topla</span>
+              Hatıra <span className="gradient-text">Topla</span>
             </span>
           </Link>
 
