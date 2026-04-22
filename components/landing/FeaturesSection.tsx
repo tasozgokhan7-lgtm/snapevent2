@@ -1,4 +1,4 @@
-import { QrCode, Upload, ImageIcon, Shield, Zap, Heart } from 'lucide-react'
+﻿import { QrCode, Upload, ImageIcon, Shield, Zap, Heart } from 'lucide-react'
 
 const features = [
   {
@@ -58,7 +58,7 @@ export default function FeaturesSection() {
             Etkinliğinizi <span className="gradient-text">Olağanüstü</span> Kılan Özellikler
           </h2>
           <p className="text-lg text-slate-500 max-w-2xl mx-auto">
-            AnıTopla ile etkinliğinizdeki her kişi fotoğraf paylaşabilir, ortak galeri oluşur ve hiçbir an kaybolmaz.
+            Hatıra Topla ile etkinliğinizdeki her kişi fotoğraf paylaşabilir, ortak galeri oluşur ve hiçbir an kaybolmaz.
           </p>
         </div>
 

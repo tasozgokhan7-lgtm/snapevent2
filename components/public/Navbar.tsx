@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
@@ -32,7 +32,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <Image src="/logo.png" alt="AnıTopla" width={40} height={40} className="rounded-xl group-hover:scale-105 transition-transform" />
+            <Image src="/logo.png" alt="Hatıra Topla" width={40} height={40} className="rounded-xl group-hover:scale-105 transition-transform" />
             <span className="text-xl font-bold text-slate-900">
               Anı<span className="gradient-text">Topla</span>
             </span>

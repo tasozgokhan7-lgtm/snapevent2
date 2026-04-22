@@ -1,9 +1,9 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 
 export const metadata = {
-  title: 'Gizlilik Politikası | AnıTopla',
-  description: 'AnıTopla platformunun gizlilik politikası ve kişisel veri koruma ilkeleri.',
+  title: 'Gizlilik Politikası | Hatıra Topla',
+  description: 'Hatıra Topla platformunun gizlilik politikası ve kişisel veri koruma ilkeleri.',
 }
 
 export default function GizlilikPage() {
@@ -17,7 +17,7 @@ export default function GizlilikPage() {
             Ana Sayfaya Dön
           </Link>
           <span className="text-slate-300">|</span>
-          <span className="text-sm font-semibold text-slate-900">AnıTopla</span>
+          <span className="text-sm font-semibold text-slate-900">Hatıra Topla</span>
         </div>
       </div>
 
@@ -35,18 +35,18 @@ export default function GizlilikPage() {
 
           <Section title="1. Genel Bakış">
             <p>
-              AnıTopla olarak kullanıcılarımızın gizliliğine büyük önem veriyoruz. Bu Gizlilik Politikası,
+              Hatıra Topla olarak kullanıcılarımızın gizliliğine büyük önem veriyoruz. Bu Gizlilik Politikası,
               platformumuzu ziyaret ettiğinizde veya kullandığınızda hangi bilgileri topladığımızı, bu bilgileri
               nasıl kullandığımızı ve koruduğumuzu açıklamaktadır.
             </p>
             <p>
               Platformumuzu kullanmaya devam ederek bu politikayı kabul etmiş sayılırsınız. Herhangi bir sorunuz için
-              bize <a href="mailto:info@anıtopla.com" className="text-brand-600 hover:underline">info@anıtopla.com</a> adresinden ulaşabilirsiniz.
+              bize <a href="mailto:info@hatiratopla.com" className="text-brand-600 hover:underline">info@hatiratopla.com</a> adresinden ulaşabilirsiniz.
             </p>
           </Section>
 
           <Section title="2. Topladığımız Bilgiler">
-            <p>AnıTopla üç farklı kullanıcı grubuna hizmet verir; her gruba göre toplanan veriler farklılık gösterir:</p>
+            <p>Hatıra Topla üç farklı kullanıcı grubuna hizmet verir; her gruba göre toplanan veriler farklılık gösterir:</p>
 
             <div className="space-y-4">
               <div className="rounded-xl bg-slate-50 border border-slate-100 p-4">
@@ -127,7 +127,7 @@ export default function GizlilikPage() {
               fotoğraflarınız kalıcı olarak silinir.
             </p>
             <p>
-              AnıTopla, yüklenen fotoğrafları reklam, tanıtım veya başka amaçlarla kullanmaz.
+              Hatıra Topla, yüklenen fotoğrafları reklam, tanıtım veya başka amaçlarla kullanmaz.
             </p>
           </Section>
 
@@ -145,7 +145,7 @@ export default function GizlilikPage() {
 
           <Section title="8. Çocukların Gizliliği">
             <p>
-              AnıTopla&#39;nın hizmetleri 13 yaşın altındaki çocuklara yönelik değildir. 13 yaşın altında olduğunu bildiğimiz
+              Hatıra Topla&#39;nın hizmetleri 13 yaşın altındaki çocuklara yönelik değildir. 13 yaşın altında olduğunu bildiğimiz
               kişilerden bilerek kişisel veri toplamıyoruz. Ebeveynler veya vasiler, çocuklarına ait verilerin işlendiğini
               fark ederlerse bizimle iletişime geçebilirler.
             </p>
@@ -168,7 +168,7 @@ export default function GizlilikPage() {
               <li>Veri taşınabilirliği hakkı</li>
             </ul>
             <p>
-              Bu haklarınızı kullanmak için <a href="mailto:info@anıtopla.com" className="text-brand-600 hover:underline">info@anıtopla.com</a> adresine yazabilirsiniz.
+              Bu haklarınızı kullanmak için <a href="mailto:info@hatiratopla.com" className="text-brand-600 hover:underline">info@hatiratopla.com</a> adresine yazabilirsiniz.
             </p>
           </Section>
 
@@ -182,8 +182,8 @@ export default function GizlilikPage() {
           <Section title="12. İletişim">
             <p>Bu politikayla ilgili sorularınız için:</p>
             <p>
-              <strong>AnıTopla</strong><br />
-              E-posta: <a href="mailto:info@anıtopla.com" className="text-brand-600 hover:underline">info@anıtopla.com</a>
+              <strong>Hatıra Topla</strong><br />
+              E-posta: <a href="mailto:info@hatiratopla.com" className="text-brand-600 hover:underline">info@hatiratopla.com</a>
             </p>
           </Section>
 

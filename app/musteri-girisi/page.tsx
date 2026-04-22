@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
@@ -64,7 +64,7 @@ export default function CustomerLoginPage() {
           <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-500 to-rose-500 flex items-center justify-center shadow-2xl mb-4">
             <Camera className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-2xl font-bold text-white">AnıTopla</h1>
+          <h1 className="text-2xl font-bold text-white">Hatıra Topla</h1>
           <p className="text-white/60 text-sm mt-1">Müşteri Girişi</p>
         </div>
 

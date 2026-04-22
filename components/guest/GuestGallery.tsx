@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { Camera, Upload, Image as ImageIcon, X, CheckCircle, Loader2 } from 'lucide-react'
@@ -8,10 +8,10 @@ const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL
 
 // Unique anonymous token per browser, stored in localStorage
 function getGuestToken(): string {
-  let token = localStorage.getItem('anıtopla_token')
+  let token = localStorage.getItem('Hatıra Topla_token')
   if (!token) {
     token = crypto.randomUUID()
-    localStorage.setItem('anıtopla_token', token)
+    localStorage.setItem('Hatıra Topla_token', token)
   }
   return token
 }

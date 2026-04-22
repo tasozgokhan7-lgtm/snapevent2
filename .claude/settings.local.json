@@ -1,4 +1,4 @@
-{
+﻿{
   "permissions": {
     "allow": [
       "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --no-src-dir --import-alias \"@/*\" --yes)",
@@ -6,7 +6,9 @@
       "Bash(npx tsc *)",
       "Bash(npm run *)",
       "Bash(rm \"/c/Users/gokha/Desktop/snapevent2/app/admin/etkinlikler/[id]/page.tsx\")",
-      "Bash(rmdir \"/c/Users/gokha/Desktop/snapevent2/app/admin/etkinlikler/[id]\")"
+      "Bash(rmdir \"/c/Users/gokha/Desktop/snapevent2/app/admin/etkinlikler/[id]\")",
+      "Read(//mnt/c/Users/gokha/Desktop/**)",
+      "Bash(find . -type f '\\(' -name '*.tsx' -o -name '*.ts' -o -name '*.css' -o -name '*.json' '\\)' ! -path './node_modules/*' ! -path './.next/*' -exec sed -i -e 's/Hatıra Topla/Hatıra Topla/g' -e s/Hatıra Topla/hatiratopla/g -e 's/info@hatiratopla\\\\.com/info@hatiratopla.com/g' '{}' ';')"
     ]
   }
 }

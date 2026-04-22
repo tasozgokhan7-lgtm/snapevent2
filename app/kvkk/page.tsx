@@ -1,9 +1,9 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 
 export const metadata = {
-  title: 'KVKK Aydınlatma Metni | AnıTopla',
-  description: 'AnıTopla platformu KVKK kapsamında kişisel verilerin işlenmesine ilişkin aydınlatma metni.',
+  title: 'KVKK Aydınlatma Metni | Hatıra Topla',
+  description: 'Hatıra Topla platformu KVKK kapsamında kişisel verilerin işlenmesine ilişkin aydınlatma metni.',
 }
 
 export default function KvkkPage() {
@@ -17,7 +17,7 @@ export default function KvkkPage() {
             Ana Sayfaya Dön
           </Link>
           <span className="text-slate-300">|</span>
-          <span className="text-sm font-semibold text-slate-900">AnıTopla</span>
+          <span className="text-sm font-semibold text-slate-900">Hatıra Topla</span>
         </div>
       </div>
 
@@ -36,15 +36,15 @@ export default function KvkkPage() {
           <Section title="1. Veri Sorumlusunun Kimliği">
             <p>
               6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") uyarınca, kişisel verileriniz; veri sorumlusu sıfatıyla
-              <strong> AnıTopla</strong> tarafından aşağıda açıklanan kapsamda işlenmektedir.
+              <strong> Hatıra Topla</strong> tarafından aşağıda açıklanan kapsamda işlenmektedir.
             </p>
             <p>
-              İletişim: <a href="mailto:info@anıtopla.com" className="text-brand-600 hover:underline">info@anıtopla.com</a>
+              İletişim: <a href="mailto:info@hatiratopla.com" className="text-brand-600 hover:underline">info@hatiratopla.com</a>
             </p>
           </Section>
 
           <Section title="2. İşlenen Kişisel Veriler">
-            <p>AnıTopla hizmetlerinden yararlanmanız kapsamında aşağıdaki kişisel veriler işlenmektedir:</p>
+            <p>Hatıra Topla hizmetlerinden yararlanmanız kapsamında aşağıdaki kişisel veriler işlenmektedir:</p>
             <ul>
               <li><strong>Misafirler (Etkinlik Katılımcıları):</strong> Ad ve soyad (isteğe bağlı), yüklenen fotoğraflar, yükleme tarihi ve saati, tarayıcı bazlı anonim oturum tanımlayıcısı.</li>
               <li><strong>Müşteriler (Etkinlik Sahipleri):</strong> Ad soyad, e-posta adresi, şifre (şifrelenmiş olarak), etkinlik adı ve tarihi, etkinlik fotoğraf galerisine ilişkin meta veriler.</li>
@@ -107,14 +107,14 @@ export default function KvkkPage() {
               <li>Kişisel verilerinizin kanuna aykırı olarak işlenmesi sebebiyle zarara uğramanız hâlinde zararın giderilmesini talep etme.</li>
             </ul>
             <p>
-              Haklarınızı kullanmak için <a href="mailto:info@anıtopla.com" className="text-brand-600 hover:underline">info@anıtopla.com</a> adresine e-posta gönderebilirsiniz.
+              Haklarınızı kullanmak için <a href="mailto:info@hatiratopla.com" className="text-brand-600 hover:underline">info@hatiratopla.com</a> adresine e-posta gönderebilirsiniz.
               Talebiniz en geç 30 gün içinde sonuçlandırılacaktır.
             </p>
           </Section>
 
           <Section title="8. Çerezler (Cookies)">
             <p>
-              AnıTopla, platformun işlevselliğini sağlamak amacıyla oturum çerezleri (session cookies) ve yerel depolama (localStorage) kullanmaktadır.
+              Hatıra Topla, platformun işlevselliğini sağlamak amacıyla oturum çerezleri (session cookies) ve yerel depolama (localStorage) kullanmaktadır.
               Bu veriler; misafirin adının hatırlanması, anonim oturum tanımlayıcısının saklanması gibi teknik amaçlarla kullanılır.
               Reklam veya profil oluşturma amaçlı çerez kullanılmamaktadır.
             </p>
@@ -132,8 +132,8 @@ export default function KvkkPage() {
               Bu aydınlatma metni veya kişisel verilerinize ilişkin her türlü soru ve talebiniz için:
             </p>
             <p>
-              <strong>AnıTopla</strong><br />
-              E-posta: <a href="mailto:info@anıtopla.com" className="text-brand-600 hover:underline">info@anıtopla.com</a>
+              <strong>Hatıra Topla</strong><br />
+              E-posta: <a href="mailto:info@hatiratopla.com" className="text-brand-600 hover:underline">info@hatiratopla.com</a>
             </p>
           </Section>
 

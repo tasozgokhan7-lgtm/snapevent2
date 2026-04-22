@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { Camera, LayoutDashboard, Users, Calendar, Image as ImageIcon, LogOut, Menu, X, Mail } from 'lucide-react'
@@ -33,7 +33,7 @@ export default function AdminSidebar() {
           <Camera className="w-5 h-5 text-white" />
         </div>
         <div>
-          <div className="font-bold text-slate-900 text-sm">AnıTopla</div>
+          <div className="font-bold text-slate-900 text-sm">Hatıra Topla</div>
           <div className="text-xs text-slate-400">Yönetim Paneli</div>
         </div>
       </div>
@@ -87,7 +87,7 @@ export default function AdminSidebar() {
           <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-brand-500 to-rose-500 flex items-center justify-center">
             <Camera className="w-4 h-4 text-white" />
           </div>
-          <span className="font-bold text-slate-900 text-sm">AnıTopla</span>
+          <span className="font-bold text-slate-900 text-sm">Hatıra Topla</span>
         </div>
         <button onClick={() => setMobileOpen(!mobileOpen)} className="p-2 rounded-lg hover:bg-slate-100">
           {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

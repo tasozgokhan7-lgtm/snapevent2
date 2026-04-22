@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase/server'
+﻿import { createClient } from '@/lib/supabase/server'
 import { Users, Calendar, Image as ImageIcon, Activity } from 'lucide-react'
 import StatCard from '@/components/ui/StatCard'
 import { formatDate } from '@/lib/utils'
@@ -29,7 +29,7 @@ export default async function AdminDashboardPage() {
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-slate-900">Dashboard</h1>
-        <p className="text-slate-500 text-sm mt-1">AnıTopla platformuna genel bakış</p>
+        <p className="text-slate-500 text-sm mt-1">Hatıra Topla platformuna genel bakış</p>
       </div>
 
       {/* Stats */}

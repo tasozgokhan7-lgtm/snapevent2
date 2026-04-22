@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 import { useState } from 'react'
 import Link from 'next/link'
 import JSZip from 'jszip'
@@ -56,7 +56,7 @@ export default function CustomerEventGallery({ event, photos }: { event: any; ph
     setBulkDownloading(true)
     setBulkProgress(0)
     const zip = new JSZip()
-    const folder = zip.folder(event.name.replace(/[^a-zA-Z0-9_\-\s]/g, '') || 'AnıTopla')!
+    const folder = zip.folder(event.name.replace(/[^a-zA-Z0-9_\-\s]/g, '') || 'Hatıra Topla')!
 
     for (let i = 0; i < photos.length; i++) {
       const photo = photos[i]

@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 import { useState, useEffect } from 'react'
 import { Camera, Calendar, ArrowRight, AlertCircle } from 'lucide-react'
 import { formatDate } from '@/lib/utils'
@@ -6,7 +6,7 @@ import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import GuestGallery from './GuestGallery'
 
-const storageKey = (slug: string) => `anıtopla_guest_${slug}`
+const storageKey = (slug: string) => `Hatıra Topla_guest_${slug}`
 
 export default function GuestEntryPage({ event }: { event: any }) {
   const [guestName, setGuestName] = useState('')
@@ -65,7 +65,7 @@ export default function GuestEntryPage({ event }: { event: any }) {
           <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-brand-400 to-rose-400 flex items-center justify-center shadow-lg">
             <Camera className="w-4 h-4 text-white" />
           </div>
-          <span className="text-white/80 font-medium text-sm">AnıTopla</span>
+          <span className="text-white/80 font-medium text-sm">Hatıra Topla</span>
         </div>
 
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
@@ -166,7 +166,7 @@ export default function GuestEntryPage({ event }: { event: any }) {
           </div>
         </div>
 
-        <p className="text-center text-white/40 text-xs mt-6">anıtopla.com</p>
+        <p className="text-center text-white/40 text-xs mt-6">Hatıra Topla.com</p>
       </div>
     </div>
   )

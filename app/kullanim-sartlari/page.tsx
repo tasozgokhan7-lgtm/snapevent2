@@ -1,9 +1,9 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 
 export const metadata = {
-  title: 'Kullanım Şartları | AnıTopla',
-  description: 'AnıTopla platformu kullanım şartları ve koşulları.',
+  title: 'Kullanım Şartları | Hatıra Topla',
+  description: 'Hatıra Topla platformu kullanım şartları ve koşulları.',
 }
 
 export default function KullanimSartlariPage() {
@@ -17,7 +17,7 @@ export default function KullanimSartlariPage() {
             Ana Sayfaya Dön
           </Link>
           <span className="text-slate-300">|</span>
-          <span className="text-sm font-semibold text-slate-900">AnıTopla</span>
+          <span className="text-sm font-semibold text-slate-900">Hatıra Topla</span>
         </div>
       </div>
 
@@ -35,18 +35,18 @@ export default function KullanimSartlariPage() {
 
           <Section title="1. Taraflar ve Kapsam">
             <p>
-              Bu Kullanım Şartları ("Şartlar"), <strong>AnıTopla</strong> ("Platform", "Biz") ile platformumuzu kullanan
+              Bu Kullanım Şartları ("Şartlar"), <strong>Hatıra Topla</strong> ("Platform", "Biz") ile platformumuzu kullanan
               bireyler veya kurumlar ("Kullanıcı", "Siz") arasındaki hukuki ilişkiyi düzenlemektedir.
             </p>
             <p>
-              AnıTopla&#39;ya erişerek veya platformu kullanarak bu Şartları kabul etmiş sayılırsınız.
+              Hatıra Topla&#39;ya erişerek veya platformu kullanarak bu Şartları kabul etmiş sayılırsınız.
               Bu Şartları kabul etmiyorsanız platformu kullanmayınız.
             </p>
           </Section>
 
           <Section title="2. Hizmetin Tanımı">
             <p>
-              AnıTopla; düğün, nişan, doğum günü, mezuniyet ve benzeri etkinlik sahiplerine QR kod tabanlı
+              Hatıra Topla; düğün, nişan, doğum günü, mezuniyet ve benzeri etkinlik sahiplerine QR kod tabanlı
               kolektif fotoğraf galerisi hizmeti sunan çevrimiçi bir platformdur. Hizmet kapsamında:
             </p>
             <ul>
@@ -82,11 +82,11 @@ export default function KullanimSartlariPage() {
 
           <Section title="5. Fotoğraflar ve İçerik Hakları">
             <p>
-              Platforma yüklediğiniz fotoğrafların telif hakkı size aittir. AnıTopla, yüklenen içeriklerin
+              Platforma yüklediğiniz fotoğrafların telif hakkı size aittir. Hatıra Topla, yüklenen içeriklerin
               mülkiyetini talep etmez.
             </p>
             <p>
-              Bununla birlikte, içeriğinizi platforma yükleyerek AnıTopla&#39;ya aşağıdaki lisansı vermiş olursunuz:
+              Bununla birlikte, içeriğinizi platforma yükleyerek Hatıra Topla&#39;ya aşağıdaki lisansı vermiş olursunuz:
               Hizmetin sağlanması, teknik işlemlerin yürütülmesi (kopyalama, depolama, yeniden boyutlandırma) ve
               platformun çalışması için gerekli kullanım hakkı. Bu lisans yalnızca hizmet amaçlıdır ve ticari amaçla kullanım içermez.
             </p>
@@ -98,7 +98,7 @@ export default function KullanimSartlariPage() {
 
           <Section title="6. İçerik Denetimi ve Kaldırma">
             <p>
-              AnıTopla, bu Şartları ihlal ettiği değerlendirilen içerikleri önceden bildirim yapmaksızın
+              Hatıra Topla, bu Şartları ihlal ettiği değerlendirilen içerikleri önceden bildirim yapmaksızın
               kaldırma hakkını saklı tutar. Uygunsuz içerik tespit edilmesi veya şikayet alınması durumunda:
             </p>
             <ul>
@@ -107,20 +107,20 @@ export default function KullanimSartlariPage() {
               <li>Gerekli durumlarda yetkili makamlarla paylaşım yapılabilir.</li>
             </ul>
             <p>
-              İçerik kaldırma taleplerini <a href="mailto:info@anıtopla.com" className="text-brand-600 hover:underline">info@anıtopla.com</a> adresine iletebilirsiniz.
+              İçerik kaldırma taleplerini <a href="mailto:info@hatiratopla.com" className="text-brand-600 hover:underline">info@hatiratopla.com</a> adresine iletebilirsiniz.
             </p>
           </Section>
 
           <Section title="7. Fikri Mülkiyet">
             <p>
-              AnıTopla platformunun tasarımı, yazılımı, logosu, marka adı ve tüm içerikleri AnıTopla&#39;ya aittir
+              Hatıra Topla platformunun tasarımı, yazılımı, logosu, marka adı ve tüm içerikleri Hatıra Topla&#39;ya aittir
               ve fikri mülkiyet hukuku kapsamında koruma altındadır. Bu materyallerin izinsiz kopyalanması,
               dağıtılması veya türev çalışma oluşturulması yasaktır.
             </p>
           </Section>
 
           <Section title="8. Hizmetin Sürekliliği ve Değişiklikler">
-            <p>AnıTopla aşağıdaki hakları saklı tutar:</p>
+            <p>Hatıra Topla aşağıdaki hakları saklı tutar:</p>
             <ul>
               <li>Hizmeti önceden bildirimle veya zorunlu durumlarda bildirimsiz olarak geçici durdurmak veya sonlandırmak,</li>
               <li>Platform özelliklerini, fiyatlarını veya kullanım koşullarını değiştirmek,</li>
@@ -133,7 +133,7 @@ export default function KullanimSartlariPage() {
 
           <Section title="9. Sorumluluk Sınırlaması">
             <p>
-              AnıTopla, kullanıcıların platforma yüklediği içeriklerden sorumlu değildir.
+              Hatıra Topla, kullanıcıların platforma yüklediği içeriklerden sorumlu değildir.
               Platformun kullanımından doğabilecek dolaylı, tesadüfi, özel veya sonuçsal zararlar için
               sorumluluğumuz, ilgili yasal düzenlemeler çerçevesinde azami ölçüde sınırlandırılmıştır.
             </p>
@@ -146,18 +146,18 @@ export default function KullanimSartlariPage() {
           <Section title="10. Tazminat">
             <p>
               Bu Şartları ihlal etmenizden, içerik yüklemelerinizden veya platformun yanlış kullanımından
-              kaynaklanan her türlü talep, dava veya zarar için AnıTopla&#39;yı ve çalışanlarını tazmin etmeyi
+              kaynaklanan her türlü talep, dava veya zarar için Hatıra Topla&#39;yı ve çalışanlarını tazmin etmeyi
               kabul edersiniz.
             </p>
           </Section>
 
           <Section title="11. Hesap Sonlandırma">
             <p>
-              Müşteri hesabınızı istediğiniz zaman <a href="mailto:info@anıtopla.com" className="text-brand-600 hover:underline">info@anıtopla.com</a> adresine e-posta göndererek
+              Müşteri hesabınızı istediğiniz zaman <a href="mailto:info@hatiratopla.com" className="text-brand-600 hover:underline">info@hatiratopla.com</a> adresine e-posta göndererek
               silebilirsiniz. Hesap silme talebinin ardından verileriniz en geç 30 gün içinde sistemden kaldırılır.
             </p>
             <p>
-              Bu Şartların ciddi ihlali durumunda AnıTopla, hesabınızı önceden bildirim yapmaksızın sonlandırabilir.
+              Bu Şartların ciddi ihlali durumunda Hatıra Topla, hesabınızı önceden bildirim yapmaksızın sonlandırabilir.
             </p>
           </Section>
 
@@ -178,7 +178,7 @@ export default function KullanimSartlariPage() {
 
           <Section title="14. Şartların Değiştirilmesi">
             <p>
-              AnıTopla bu Şartları dilediği zaman güncelleme hakkını saklı tutar. Güncellenmiş Şartlar bu sayfada
+              Hatıra Topla bu Şartları dilediği zaman güncelleme hakkını saklı tutar. Güncellenmiş Şartlar bu sayfada
               yayımlandığı tarihten itibaren geçerli olur. Platformu kullanmaya devam etmeniz, güncellenmiş Şartları
               kabul ettiğiniz anlamına gelir.
             </p>
@@ -189,8 +189,8 @@ export default function KullanimSartlariPage() {
               Bu Şartlara ilişkin sorularınız veya ihlal bildirimleri için:
             </p>
             <p>
-              <strong>AnıTopla</strong><br />
-              E-posta: <a href="mailto:info@anıtopla.com" className="text-brand-600 hover:underline">info@anıtopla.com</a>
+              <strong>Hatıra Topla</strong><br />
+              E-posta: <a href="mailto:info@hatiratopla.com" className="text-brand-600 hover:underline">info@hatiratopla.com</a>
             </p>
           </Section>
 

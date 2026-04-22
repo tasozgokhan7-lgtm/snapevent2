@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import Image from 'next/image'
 import { Mail, Phone } from 'lucide-react'
 
@@ -10,14 +10,14 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-2.5 mb-4">
-              <Image src="/logo.png" alt="AnıTopla" width={36} height={36} className="rounded-xl" />
-              <span className="text-xl font-bold text-white">AnıTopla</span>
+              <Image src="/logo.png" alt="Hatıra Topla" width={36} height={36} className="rounded-xl" />
+              <span className="text-xl font-bold text-white">Hatıra Topla</span>
             </div>
             <p className="text-sm leading-relaxed max-w-sm">
               Etkinliklerinizin her anını QR kod ile kolayca paylaşın. Misafirleriniz anılarını yüklesin, hep birlikte hatıraları yaşayın.
             </p>
             <div className="flex items-center gap-4 mt-6">
-              <a href="mailto:info@anıtopla.com" className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-brand-600 flex items-center justify-center transition-colors">
+              <a href="mailto:info@hatiratopla.com" className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-brand-600 flex items-center justify-center transition-colors">
                 <Mail className="w-4 h-4" />
               </a>
               <a href="tel:+905001234567" className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-brand-600 flex items-center justify-center transition-colors">
@@ -43,13 +43,13 @@ export default function Footer() {
               <li><Link href="/kvkk" className="hover:text-white transition-colors">KVKK Aydınlatma Metni</Link></li>
               <li><Link href="/gizlilik" className="hover:text-white transition-colors">Gizlilik Politikası</Link></li>
               <li><Link href="/kullanim-sartlari" className="hover:text-white transition-colors">Kullanım Şartları</Link></li>
-              <li><a href="mailto:info@anıtopla.com" className="hover:text-white transition-colors">info@anıtopla.com</a></li>
+              <li><a href="mailto:info@hatiratopla.com" className="hover:text-white transition-colors">info@hatiratopla.com</a></li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-          <p>© 2026 AnıTopla. Tüm hakları saklıdır.</p>
+          <p>© 2026 Hatıra Topla. Tüm hakları saklıdır.</p>
           <div className="flex items-center gap-4">
             <Link href="/kvkk" className="hover:text-white transition-colors">KVKK</Link>
             <Link href="/gizlilik" className="hover:text-white transition-colors">Gizlilik</Link>

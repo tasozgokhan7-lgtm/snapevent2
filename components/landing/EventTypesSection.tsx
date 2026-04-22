@@ -1,4 +1,4 @@
-const types = [
+﻿const types = [
   { emoji: '💍', title: 'Düğün', desc: 'En özel günün tüm anlarını misafirlerinizle paylaşın.' },
   { emoji: '💑', title: 'Nişan', desc: 'Mutluluğun ilk adımını ölümsüzleştirin.' },
   { emoji: '🎂', title: 'Doğum Günü', desc: 'Sürpriz ve neşeyle dolu anlar kaybolmasın.' },
@@ -19,7 +19,7 @@ export default function EventTypesSection() {
             Her Etkinlik İçin <span className="gradient-text">Mükemmel Çözüm</span>
           </h2>
           <p className="text-lg text-slate-500 max-w-2xl mx-auto">
-            Düğünden kurumsal etkinliğe, doğum gününden mezuniyete — AnıTopla her kutlamanıza yakışır.
+            Düğünden kurumsal etkinliğe, doğum gününden mezuniyete — Hatıra Topla her kutlamanıza yakışır.
           </p>
         </div>
 

@@ -1,10 +1,10 @@
-'use client'
+﻿'use client'
 import { useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import Textarea from '@/components/ui/Textarea'
-import { CheckCircle } from 'lucide-react'
+import { CheckCircle, Mail } from 'lucide-react'
 
 export default function ContactSection() {
   const [form, setForm] = useState({ name: '', email_or_phone: '', event_type: '', event_date: '', note: '' })
@@ -41,15 +41,30 @@ export default function ContactSection() {
             <h2 className="text-4xl font-bold text-slate-900 mb-4">
               Etkinliğiniz İçin <span className="gradient-text">Teklif Alın</span>
             </h2>
-            <p className="text-slate-500 text-lg leading-relaxed mb-8">
-              Düğününüz, nişanınız veya özel etkinliğiniz için AnıTopla&apos;i kullanmak ister misiniz? Formu doldurun, size en kısa sürede dönelim.
+            <p className="text-slate-500 text-lg leading-relaxed mb-6">
+              Formu doldurun veya doğrudan bize mail atın — aynı gün giriş bilgilerinizi ve baskıya hazır QR tasarımlarınızı iletiyoruz.
             </p>
 
-            <div className="space-y-4">
+            {/* Direct mail CTA */}
+            <a
+              href="mailto:info@hatiratopla.com?subject=Etkinlik%20Talebi"
+              className="flex items-center gap-3 p-4 rounded-2xl bg-gradient-to-r from-brand-50 to-rose-50 border border-brand-100 hover:border-brand-300 transition-all group mb-6"
+            >
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-rose-500 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                <Mail className="w-5 h-5 text-white" />
+              </div>
+              <div>
+                <div className="font-semibold text-slate-800 text-sm">Direkt e-posta gönderin</div>
+                <div className="text-brand-600 text-sm font-medium">info@hatiratopla.com</div>
+              </div>
+            </a>
+
+            <div className="space-y-3">
               {[
-                { emoji: '✅', title: 'Hızlı Kurulum', desc: '15 dakikada etkinliğiniz hazır' },
-                { emoji: '📱', title: 'Mobil Uyumlu', desc: 'Her cihazdan sorunsuz erişim' },
-                { emoji: '🔒', title: 'Güvenli', desc: 'Fotoğraflarınız güvende' },
+                { emoji: '⚡', title: 'Aynı Gün Kurulum', desc: 'Talebinizi aldıktan sonra aynı gün sisteminiz hazır' },
+                { emoji: '🎨', title: 'QR Tasarımları Dahil', desc: 'Baskıya hazır masa kartı, afiş ve dilek kartı tasarımları' },
+                { emoji: '📱', title: 'Sınırsız Misafir', desc: 'İstediğiniz kadar katılımcı, hiçbir kısıtlama yok' },
+                { emoji: '🔒', title: 'Güvenli & Kalıcı', desc: 'Fotoğraflarınız etkinlik sonrasında da erişilebilir' },
               ].map(({ emoji, title, desc }) => (
                 <div key={title} className="flex items-center gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
                   <span className="text-2xl">{emoji}</span>
@@ -69,8 +84,8 @@ export default function ContactSection() {
                 <div className="w-16 h-16 rounded-full bg-emerald-50 flex items-center justify-center">
                   <CheckCircle className="w-8 h-8 text-emerald-500" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900">Mesajınız Alındı!</h3>
-                <p className="text-slate-500">En kısa sürede size dönüş yapacağız.</p>
+                <h3 className="text-xl font-bold text-slate-900">Talebiniz Alındı!</h3>
+                <p className="text-slate-500">En kısa sürede giriş bilgilerinizi ve QR tasarımlarınızı iletiyoruz.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
