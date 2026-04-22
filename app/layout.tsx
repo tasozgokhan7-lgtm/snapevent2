@@ -6,7 +6,7 @@ const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'SnapEvent — QR Tabanlı Etkinlik Fotoğraf Paylaşım Platformu',
+  title: 'AnıTopla — QR Tabanlı Etkinlik Fotoğraf Paylaşım Platformu',
   description: 'Etkinliğinizin her anını QR kod ile kolayca paylaşın. Misafirleriniz fotoğraf yüklesin, ortak galeri oluşsun.',
   keywords: 'etkinlik fotoğraf, QR kod galeri, düğün fotoğraf paylaşım, etkinlik galeri',
 }

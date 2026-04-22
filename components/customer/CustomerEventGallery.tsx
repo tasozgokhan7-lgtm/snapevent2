@@ -56,7 +56,7 @@ export default function CustomerEventGallery({ event, photos }: { event: any; ph
     setBulkDownloading(true)
     setBulkProgress(0)
     const zip = new JSZip()
-    const folder = zip.folder(event.name.replace(/[^a-zA-Z0-9_\-\s]/g, '') || 'SnapEvent')!
+    const folder = zip.folder(event.name.replace(/[^a-zA-Z0-9_\-\s]/g, '') || 'AnıTopla')!
 
     for (let i = 0; i < photos.length; i++) {
       const photo = photos[i]

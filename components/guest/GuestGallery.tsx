@@ -8,10 +8,10 @@ const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL
 
 // Unique anonymous token per browser, stored in localStorage
 function getGuestToken(): string {
-  let token = localStorage.getItem('snapevent_token')
+  let token = localStorage.getItem('anıtopla_token')
   if (!token) {
     token = crypto.randomUUID()
-    localStorage.setItem('snapevent_token', token)
+    localStorage.setItem('anıtopla_token', token)
   }
   return token
 }
@@ -122,7 +122,7 @@ export default function GuestGallery({ event, guestName }: { event: any; guestNa
     setReactionLoading(photoId)
 
     if (current.userReaction === type) {
-      // Toggle off: remove reaction
+      // Toggle off — optimistic update
       const optimistic: ReactionCount = {
         ...current,
         hearts: type === 'heart' ? Math.max(0, current.hearts - 1) : current.hearts,
@@ -130,12 +130,20 @@ export default function GuestGallery({ event, guestName }: { event: any; guestNa
         userReaction: null,
       }
       setReactions(prev => ({ ...prev, [photoId]: optimistic }))
-      await supabase.from('photo_reactions')
+
+      const { error } = await supabase
+        .from('photo_reactions')
         .delete()
         .eq('photo_id', photoId)
         .eq('guest_token', token)
+
+      if (error) {
+        // Revert
+        setReactions(prev => ({ ...prev, [photoId]: current }))
+        console.error('Reaction delete error:', error.message)
+      }
     } else {
-      // Switch or new reaction
+      // New or switched reaction — optimistic update
       const optimistic: ReactionCount = {
         hearts: type === 'heart'
           ? current.hearts + 1
@@ -147,13 +155,22 @@ export default function GuestGallery({ event, guestName }: { event: any; guestNa
       }
       setReactions(prev => ({ ...prev, [photoId]: optimistic }))
 
-      // Upsert: delete old then insert new
-      await supabase.from('photo_reactions')
+      // Delete old reaction first (if exists), then insert new
+      await supabase
+        .from('photo_reactions')
         .delete()
         .eq('photo_id', photoId)
         .eq('guest_token', token)
-      await supabase.from('photo_reactions')
+
+      const { error } = await supabase
+        .from('photo_reactions')
         .insert({ photo_id: photoId, guest_token: token, reaction_type: type })
+
+      if (error) {
+        // Revert optimistic update
+        setReactions(prev => ({ ...prev, [photoId]: current }))
+        console.error('Reaction insert error:', error.message, error.code)
+      }
     }
     setReactionLoading(null)
   }

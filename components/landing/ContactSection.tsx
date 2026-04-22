@@ -42,7 +42,7 @@ export default function ContactSection() {
               Etkinliğiniz İçin <span className="gradient-text">Teklif Alın</span>
             </h2>
             <p className="text-slate-500 text-lg leading-relaxed mb-8">
-              Düğününüz, nişanınız veya özel etkinliğiniz için SnapEvent&apos;i kullanmak ister misiniz? Formu doldurun, size en kısa sürede dönelim.
+              Düğününüz, nişanınız veya özel etkinliğiniz için AnıTopla&apos;i kullanmak ister misiniz? Formu doldurun, size en kısa sürede dönelim.
             </p>
 
             <div className="space-y-4">

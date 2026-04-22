@@ -16,7 +16,7 @@ export default function EventDetail({ event: initialEvent, initialPhotos, guestC
   const [copied, setCopied] = useState(false)
   const supabase = createClient()
 
-  const guestUrl = `${typeof window !== 'undefined' ? window.location.origin : 'https://snapevent.com'}/e/${event.slug}`
+  const guestUrl = `${typeof window !== 'undefined' ? window.location.origin : 'https://anıtopla.com'}/e/${event.slug}`
 
   const copyUrl = () => {
     navigator.clipboard.writeText(guestUrl)

@@ -58,7 +58,7 @@ export default function FeaturesSection() {
             Etkinliğinizi <span className="gradient-text">Olağanüstü</span> Kılan Özellikler
           </h2>
           <p className="text-lg text-slate-500 max-w-2xl mx-auto">
-            SnapEvent ile etkinliğinizdeki her kişi fotoğraf paylaşabilir, ortak galeri oluşur ve hiçbir an kaybolmaz.
+            AnıTopla ile etkinliğinizdeki her kişi fotoğraf paylaşabilir, ortak galeri oluşur ve hiçbir an kaybolmaz.
           </p>
         </div>
 

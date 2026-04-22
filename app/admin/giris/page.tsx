@@ -51,7 +51,7 @@ export default function AdminLoginPage() {
           <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-500 to-rose-500 flex items-center justify-center shadow-2xl mb-4">
             <Camera className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-2xl font-bold text-white">SnapEvent Admin</h1>
+          <h1 className="text-2xl font-bold text-white">AnıTopla Admin</h1>
           <p className="text-white/60 text-sm mt-1">Yönetim paneline giriş yapın</p>
         </div>
 
@@ -60,7 +60,7 @@ export default function AdminLoginPage() {
           <p className="text-slate-500 text-sm mb-8">Devam etmek için giriş yapınız.</p>
 
           <form onSubmit={handleLogin} className="space-y-5">
-            <Input label="E-posta Adresi" type="email" placeholder="admin@snapevent.com"
+            <Input label="E-posta Adresi" type="email" placeholder="admin@anıtopla.com"
               value={email} onChange={e => setEmail(e.target.value)} />
             <div className="flex flex-col gap-1.5">
               <label className="text-sm font-medium text-slate-700">Şifre</label>

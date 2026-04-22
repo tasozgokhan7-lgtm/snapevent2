@@ -14,7 +14,7 @@ const faqs = [
   },
   {
     q: 'QR kodu nasıl oluşturuyorum?',
-    a: 'SnapEvent, etkinlik için benzersiz bir bağlantı oluşturur. Bu bağlantıyı istediğiniz ücretsiz QR kod oluşturucuya yapıştırarak QR kodunuzu kolayca elde edebilirsiniz.',
+    a: 'AnıTopla, etkinlik için benzersiz bir bağlantı oluşturur. Bu bağlantıyı istediğiniz ücretsiz QR kod oluşturucuya yapıştırarak QR kodunuzu kolayca elde edebilirsiniz.',
   },
   {
     q: 'Kaç kişi aynı anda fotoğraf yükleyebilir?',
@@ -26,7 +26,7 @@ const faqs = [
   },
   {
     q: 'Mobil cihazlarda çalışıyor mu?',
-    a: 'Evet, SnapEvent mobil öncelikli tasarlanmıştır. iOS ve Android cihazlarda, tüm modern tarayıcılarda mükemmel çalışır.',
+    a: 'Evet, AnıTopla mobil öncelikli tasarlanmıştır. iOS ve Android cihazlarda, tüm modern tarayıcılarda mükemmel çalışır.',
   },
 ]
 

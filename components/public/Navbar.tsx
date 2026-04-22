@@ -1,7 +1,8 @@
 'use client'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState, useEffect } from 'react'
-import { Menu, X, Camera } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import Button from '@/components/ui/Button'
 import { cn } from '@/lib/utils'
 
@@ -31,11 +32,9 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-rose-500 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
-              <Camera className="w-5 h-5 text-white" />
-            </div>
+            <Image src="/logo.png" alt="AnıTopla" width={40} height={40} className="rounded-xl group-hover:scale-105 transition-transform" />
             <span className="text-xl font-bold text-slate-900">
-              Snap<span className="gradient-text">Event</span>
+              Anı<span className="gradient-text">Topla</span>
             </span>
           </Link>
 

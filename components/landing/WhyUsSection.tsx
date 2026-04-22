@@ -23,7 +23,7 @@ export default function WhyUsSection() {
           {/* Left */}
           <div>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white/80 text-sm font-medium mb-6">
-              Neden SnapEvent?
+              Neden AnıTopla?
             </div>
             <h2 className="text-4xl font-bold text-white mb-6">
               Etkinliklerinizde{' '}
@@ -31,7 +31,7 @@ export default function WhyUsSection() {
               Platform
             </h2>
             <p className="text-white/70 text-lg leading-relaxed mb-8">
-              Diğer platformlardan farklı olarak SnapEvent; sadelik, hız ve kullanıcı deneyimini ön plana koyar. Misafirleriniz saniyeler içinde fotoğraf paylaşmaya başlar.
+              Diğer platformlardan farklı olarak AnıTopla; sadelik, hız ve kullanıcı deneyimini ön plana koyar. Misafirleriniz saniyeler içinde fotoğraf paylaşmaya başlar.
             </p>
             <a href="#iletisim" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-brand-500 to-rose-500 text-white font-semibold hover:from-brand-600 hover:to-rose-600 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
               Ücretsiz Demo Talep Et

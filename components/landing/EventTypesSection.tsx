@@ -19,7 +19,7 @@ export default function EventTypesSection() {
             Her Etkinlik İçin <span className="gradient-text">Mükemmel Çözüm</span>
           </h2>
           <p className="text-lg text-slate-500 max-w-2xl mx-auto">
-            Düğünden kurumsal etkinliğe, doğum gününden mezuniyete — SnapEvent her kutlamanıza yakışır.
+            Düğünden kurumsal etkinliğe, doğum gününden mezuniyete — AnıTopla her kutlamanıza yakışır.
           </p>
         </div>
 
