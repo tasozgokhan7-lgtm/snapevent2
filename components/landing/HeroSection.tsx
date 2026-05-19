@@ -90,14 +90,20 @@ export default function HeroSection() {
                 </div>
                 <div className="grid grid-cols-3 gap-2">
                   {[
-                    'bg-gradient-to-br from-rose-400 to-pink-500',
-                    'bg-gradient-to-br from-brand-400 to-purple-500',
-                    'bg-gradient-to-br from-amber-400 to-orange-500',
-                    'bg-gradient-to-br from-emerald-400 to-teal-500',
-                    'bg-gradient-to-br from-blue-400 to-indigo-500',
-                    'bg-gradient-to-br from-rose-300 to-brand-400',
-                  ].map((bg, i) => (
-                    <div key={i} className={`aspect-square rounded-xl ${bg} opacity-80`} />
+                    'https://images.unsplash.com/photo-1519741497674-4c8a14e6a5c5?w=200&h=200&fit=crop&auto=format',
+                    'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=200&h=200&fit=crop&auto=format',
+                    'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=200&h=200&fit=crop&auto=format',
+                    'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=200&h=200&fit=crop&auto=format',
+                    'https://images.unsplash.com/photo-1511285560929-780148161f4b?w=200&h=200&fit=crop&auto=format',
+                    'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=200&h=200&fit=crop&auto=format',
+                  ].map((src, i) => (
+                    <div key={i} className="aspect-square rounded-xl overflow-hidden">
+                      <img
+                        src={src}
+                        alt={`Etkinlik fotoğrafı ${i + 1}`}
+                        className="w-full h-full object-cover opacity-90 hover:opacity-100 hover:scale-105 transition-all duration-300"
+                      />
+                    </div>
                   ))}
                 </div>
                 <div className="mt-4 flex items-center justify-between">

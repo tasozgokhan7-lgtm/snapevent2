@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
@@ -11,7 +11,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 20)
+    const fn = () => setScrolled(window.scrollY > 60)
+    fn()
     window.addEventListener('scroll', fn)
     return () => window.removeEventListener('scroll', fn)
   }, [])
@@ -26,14 +27,27 @@ export default function Navbar() {
   return (
     <nav className={cn(
       'fixed top-0 left-0 right-0 z-40 transition-all duration-300',
-      scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100' : 'bg-transparent'
+      scrolled
+        ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100'
+        : 'bg-transparent'
     )}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
+
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <Image src="/logo.png" alt="Hatıra Topla" width={56} height={56} className="rounded-xl group-hover:scale-105 transition-transform object-contain" unoptimized />
-            <span className="text-xl font-bold text-slate-900">
+            <Image
+              src="/logo.png"
+              alt="Hatıra Topla"
+              width={56}
+              height={56}
+              className="rounded-xl group-hover:scale-105 transition-transform object-contain"
+              unoptimized
+            />
+            <span className={cn(
+              'text-xl font-bold transition-colors',
+              scrolled ? 'text-slate-900' : 'text-white'
+            )}>
               Hatıra <span className="gradient-text">Topla</span>
             </span>
           </Link>
@@ -41,7 +55,16 @@ export default function Navbar() {
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
             {links.map(l => (
-              <a key={l.href} href={l.href} className="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">
+              <a
+                key={l.href}
+                href={l.href}
+                className={cn(
+                  'text-sm font-medium transition-colors',
+                  scrolled
+                    ? 'text-slate-600 hover:text-brand-600'
+                    : 'text-white/80 hover:text-white'
+                )}
+              >
                 {l.label}
               </a>
             ))}
@@ -50,7 +73,14 @@ export default function Navbar() {
           {/* Actions */}
           <div className="hidden md:flex items-center gap-3">
             <Link href="/musteri-girisi">
-              <Button variant="secondary" size="sm">Müşteri Girişi</Button>
+              <button className={cn(
+                'px-4 py-2 rounded-xl text-sm font-semibold border transition-all',
+                scrolled
+                  ? 'border-slate-200 text-slate-700 hover:bg-slate-50'
+                  : 'border-white/30 text-white hover:bg-white/10'
+              )}>
+                Müşteri Girişi
+              </button>
             </Link>
             <a href="#iletisim">
               <Button size="sm">Teklif Al</Button>
@@ -58,24 +88,49 @@ export default function Navbar() {
           </div>
 
           {/* Mobile toggle */}
-          <button className="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100" onClick={() => setOpen(!open)}>
+          <button
+            className={cn(
+              'md:hidden p-2 rounded-lg transition-colors',
+              scrolled ? 'text-slate-600 hover:bg-slate-100' : 'text-white hover:bg-white/10'
+            )}
+            onClick={() => setOpen(!open)}
+          >
             {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
 
         {/* Mobile menu */}
         {open && (
-          <div className="md:hidden pb-6 pt-2 border-t border-slate-100">
+          <div className={cn(
+            'md:hidden pb-6 pt-2 border-t',
+            scrolled ? 'border-slate-100 bg-white' : 'border-white/10 bg-slate-900/95 backdrop-blur-md'
+          )}>
             <div className="flex flex-col gap-1">
               {links.map(l => (
-                <a key={l.href} href={l.href} onClick={() => setOpen(false)}
-                  className="px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-xl">
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className={cn(
+                    'px-4 py-3 text-sm font-medium rounded-xl transition-colors',
+                    scrolled
+                      ? 'text-slate-700 hover:bg-slate-50'
+                      : 'text-white/80 hover:bg-white/10'
+                  )}
+                >
                   {l.label}
                 </a>
               ))}
               <div className="flex flex-col gap-2 mt-4 px-2">
                 <Link href="/musteri-girisi" onClick={() => setOpen(false)}>
-                  <Button variant="secondary" className="w-full">Müşteri Girişi</Button>
+                  <button className={cn(
+                    'w-full px-4 py-2.5 rounded-xl text-sm font-semibold border transition-all',
+                    scrolled
+                      ? 'border-slate-200 text-slate-700'
+                      : 'border-white/30 text-white'
+                  )}>
+                    Müşteri Girişi
+                  </button>
                 </Link>
                 <a href="#iletisim" onClick={() => setOpen(false)}>
                   <Button className="w-full">Teklif Al</Button>
