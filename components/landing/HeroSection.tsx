@@ -90,11 +90,11 @@ export default function HeroSection() {
                 </div>
                 <div className="grid grid-cols-3 gap-2">
                   {[
-                    'https://images.unsplash.com/photo-1519741497674-4c8a14e6a5c5?w=200&h=200&fit=crop&auto=format',
+                    'https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=200&h=200&fit=crop&auto=format',
                     'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=200&h=200&fit=crop&auto=format',
                     'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=200&h=200&fit=crop&auto=format',
                     'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=200&h=200&fit=crop&auto=format',
-                    'https://images.unsplash.com/photo-1511285560929-780148161f4b?w=200&h=200&fit=crop&auto=format',
+                    'https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=200&h=200&fit=crop&auto=format',
                     'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=200&h=200&fit=crop&auto=format',
                   ].map((src, i) => (
                     <div key={i} className="aspect-square rounded-xl overflow-hidden">
