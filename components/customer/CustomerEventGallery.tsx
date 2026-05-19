@@ -1,12 +1,13 @@
-﻿'use client'
+'use client'
 import { useState } from 'react'
 import Link from 'next/link'
 import JSZip from 'jszip'
+import { createClient } from '@/lib/supabase/client'
 import { formatDate, formatDateTime } from '@/lib/utils'
 import {
   ArrowLeft, Download, Image as ImageIcon, X,
   ChevronLeft, ChevronRight, Calendar, Users,
-  DownloadCloud, Loader2, ZoomIn
+  DownloadCloud, Loader2, ZoomIn, Trash2, AlertTriangle
 } from 'lucide-react'
 import Button from '@/components/ui/Button'
 import Badge from '@/components/ui/Badge'
@@ -17,16 +18,20 @@ function photoUrl(path: string) {
   return `${SUPABASE_URL}/storage/v1/object/public/event-photos/${path}`
 }
 
-export default function CustomerEventGallery({ event, photos }: { event: any; photos: any[] }) {
+export default function CustomerEventGallery({ event, photos: initialPhotos }: { event: any; photos: any[] }) {
+  const [photoList, setPhotoList] = useState(initialPhotos)
   const [lightbox, setLightbox] = useState<number | null>(null)
   const [downloading, setDownloading] = useState<string | null>(null)
   const [bulkDownloading, setBulkDownloading] = useState(false)
   const [bulkProgress, setBulkProgress] = useState(0)
+  // Delete state
+  const [deleteTarget, setDeleteTarget] = useState<any | null>(null) // photo to confirm delete
+  const [deleting, setDeleting] = useState<string | null>(null)
 
-  const activeLightboxPhoto = lightbox !== null ? photos[lightbox] : null
+  const activeLightboxPhoto = lightbox !== null ? photoList[lightbox] : null
 
-  const prevPhoto = () => setLightbox(i => (i !== null && i > 0 ? i - 1 : photos.length - 1))
-  const nextPhoto = () => setLightbox(i => (i !== null && i < photos.length - 1 ? i + 1 : 0))
+  const prevPhoto = () => setLightbox(i => (i !== null && i > 0 ? i - 1 : photoList.length - 1))
+  const nextPhoto = () => setLightbox(i => (i !== null && i < photoList.length - 1 ? i + 1 : 0))
 
   // Single photo download
   const downloadSingle = async (photo: any) => {
@@ -50,16 +55,43 @@ export default function CustomerEventGallery({ event, photos }: { event: any; ph
     setDownloading(null)
   }
 
+  // Delete photo (storage + DB)
+  const handleDelete = async (photo: any) => {
+    setDeleting(photo.id)
+    try {
+      const supabase = createClient()
+      // 1. Storage'dan sil
+      await supabase.storage.from('event-photos').remove([photo.storage_path])
+      // 2. Veritabanından sil
+      await supabase.from('photos').delete().eq('id', photo.id)
+      // 3. Local listeden kaldır
+      const newList = photoList.filter(p => p.id !== photo.id)
+      setPhotoList(newList)
+      // Lightbox açıksa düzelt
+      if (lightbox !== null) {
+        if (newList.length === 0) {
+          setLightbox(null)
+        } else if (lightbox >= newList.length) {
+          setLightbox(newList.length - 1)
+        }
+      }
+    } catch (err) {
+      console.error('Delete error:', err)
+    }
+    setDeleting(null)
+    setDeleteTarget(null)
+  }
+
   // Bulk download as ZIP
   const downloadAll = async () => {
-    if (photos.length === 0) return
+    if (photoList.length === 0) return
     setBulkDownloading(true)
     setBulkProgress(0)
     const zip = new JSZip()
     const folder = zip.folder(event.name.replace(/[^a-zA-Z0-9_\-\s]/g, '') || 'Hatıra Topla')!
 
-    for (let i = 0; i < photos.length; i++) {
-      const photo = photos[i]
+    for (let i = 0; i < photoList.length; i++) {
+      const photo = photoList[i]
       try {
         const response = await fetch(photoUrl(photo.storage_path))
         const blob = await response.blob()
@@ -69,7 +101,7 @@ export default function CustomerEventGallery({ event, photos }: { event: any; ph
       } catch (err) {
         console.error(`Failed to fetch photo ${i}:`, err)
       }
-      setBulkProgress(Math.round(((i + 1) / photos.length) * 90))
+      setBulkProgress(Math.round(((i + 1) / photoList.length) * 90))
     }
 
     setBulkProgress(95)
@@ -110,7 +142,7 @@ export default function CustomerEventGallery({ event, photos }: { event: any; ph
           )}
         </div>
 
-        {photos.length > 0 && (
+        {photoList.length > 0 && (
           <Button
             onClick={downloadAll}
             disabled={bulkDownloading}
@@ -125,7 +157,7 @@ export default function CustomerEventGallery({ event, photos }: { event: any; ph
             ) : (
               <>
                 <DownloadCloud className="w-5 h-5" />
-                Tümünü İndir ({photos.length})
+                Tümünü İndir ({photoList.length})
               </>
             )}
           </Button>
@@ -146,7 +178,7 @@ export default function CustomerEventGallery({ event, photos }: { event: any; ph
             />
           </div>
           <p className="text-xs text-slate-400 mt-2">
-            {photos.length} fotoğraf ZIP dosyasına ekleniyor. Lütfen bekleyin...
+            {photoList.length} fotoğraf ZIP dosyasına ekleniyor. Lütfen bekleyin...
           </p>
         </div>
       )}
@@ -158,7 +190,7 @@ export default function CustomerEventGallery({ event, photos }: { event: any; ph
             <ImageIcon className="w-6 h-6 text-white" />
           </div>
           <div>
-            <div className="text-2xl font-bold text-slate-900">{photos.length}</div>
+            <div className="text-2xl font-bold text-slate-900">{photoList.length}</div>
             <div className="text-sm text-slate-500">Toplam Fotoğraf</div>
           </div>
         </div>
@@ -168,7 +200,7 @@ export default function CustomerEventGallery({ event, photos }: { event: any; ph
           </div>
           <div>
             <div className="text-2xl font-bold text-slate-900">
-              {new Set(photos.map(p => p.uploader_name)).size}
+              {new Set(photoList.map(p => p.uploader_name)).size}
             </div>
             <div className="text-sm text-slate-500">Katılımcı</div>
           </div>
@@ -176,7 +208,7 @@ export default function CustomerEventGallery({ event, photos }: { event: any; ph
       </div>
 
       {/* Gallery */}
-      {photos.length === 0 ? (
+      {photoList.length === 0 ? (
         <div className="bg-white rounded-2xl border border-slate-100 p-16 text-center">
           <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center mx-auto mb-4">
             <ImageIcon className="w-8 h-8 text-slate-400" />
@@ -186,7 +218,7 @@ export default function CustomerEventGallery({ event, photos }: { event: any; ph
         </div>
       ) : (
         <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 space-y-3">
-          {photos.map((photo, idx) => (
+          {photoList.map((photo, idx) => (
             <div key={photo.id} className="break-inside-avoid group relative bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300">
               {/* Image */}
               <div className="relative overflow-hidden cursor-pointer" onClick={() => setLightbox(idx)}>
@@ -205,6 +237,7 @@ export default function CustomerEventGallery({ event, photos }: { event: any; ph
                     <button
                       className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/40 transition-colors"
                       onClick={e => { e.stopPropagation(); setLightbox(idx) }}
+                      title="Büyüt"
                     >
                       <ZoomIn className="w-3.5 h-3.5" />
                     </button>
@@ -212,10 +245,18 @@ export default function CustomerEventGallery({ event, photos }: { event: any; ph
                       className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/40 transition-colors"
                       onClick={e => { e.stopPropagation(); downloadSingle(photo) }}
                       disabled={downloading === photo.id}
+                      title="İndir"
                     >
                       {downloading === photo.id
                         ? <Loader2 className="w-3.5 h-3.5 animate-spin" />
                         : <Download className="w-3.5 h-3.5" />}
+                    </button>
+                    <button
+                      className="w-8 h-8 rounded-full bg-rose-500/80 backdrop-blur-sm flex items-center justify-center text-white hover:bg-rose-600 transition-colors"
+                      onClick={e => { e.stopPropagation(); setDeleteTarget(photo) }}
+                      title="Sil"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
                     </button>
                   </div>
                 </div>
@@ -227,23 +268,35 @@ export default function CustomerEventGallery({ event, photos }: { event: any; ph
                   <p className="text-xs font-semibold text-slate-700 truncate">{photo.uploader_name}</p>
                   <p className="text-xs text-slate-400">{formatDateTime(photo.created_at)}</p>
                 </div>
-                <button
-                  onClick={() => downloadSingle(photo)}
-                  disabled={downloading === photo.id}
-                  className="shrink-0 w-8 h-8 rounded-lg bg-brand-50 hover:bg-brand-100 flex items-center justify-center text-brand-600 transition-colors disabled:opacity-50"
-                  title="İndir"
-                >
-                  {downloading === photo.id
-                    ? <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                    : <Download className="w-3.5 h-3.5" />}
-                </button>
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <button
+                    onClick={() => downloadSingle(photo)}
+                    disabled={downloading === photo.id}
+                    className="w-8 h-8 rounded-lg bg-brand-50 hover:bg-brand-100 flex items-center justify-center text-brand-600 transition-colors disabled:opacity-50"
+                    title="İndir"
+                  >
+                    {downloading === photo.id
+                      ? <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                      : <Download className="w-3.5 h-3.5" />}
+                  </button>
+                  <button
+                    onClick={() => setDeleteTarget(photo)}
+                    disabled={deleting === photo.id}
+                    className="w-8 h-8 rounded-lg bg-rose-50 hover:bg-rose-100 flex items-center justify-center text-rose-500 transition-colors disabled:opacity-50"
+                    title="Sil"
+                  >
+                    {deleting === photo.id
+                      ? <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                      : <Trash2 className="w-3.5 h-3.5" />}
+                  </button>
+                </div>
               </div>
             </div>
           ))}
         </div>
       )}
 
-      {/* Lightbox */}
+      {/* ── Lightbox ── */}
       {lightbox !== null && activeLightboxPhoto && (
         <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center">
           {/* Close */}
@@ -256,20 +309,31 @@ export default function CustomerEventGallery({ event, photos }: { event: any; ph
 
           {/* Counter */}
           <div className="absolute top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-white/10 text-white text-sm">
-            {lightbox + 1} / {photos.length}
+            {lightbox + 1} / {photoList.length}
           </div>
 
-          {/* Download button in lightbox */}
-          <button
-            onClick={() => downloadSingle(activeLightboxPhoto)}
-            disabled={downloading === activeLightboxPhoto.id}
-            className="absolute top-4 right-20 w-11 h-11 rounded-full bg-brand-600/80 hover:bg-brand-600 text-white flex items-center justify-center transition-colors z-10"
-            title="Bu fotoğrafı indir"
-          >
-            {downloading === activeLightboxPhoto.id
-              ? <Loader2 className="w-4 h-4 animate-spin" />
-              : <Download className="w-4 h-4" />}
-          </button>
+          {/* Action buttons in lightbox */}
+          <div className="absolute top-4 right-20 flex gap-2 z-10">
+            {/* Download */}
+            <button
+              onClick={() => downloadSingle(activeLightboxPhoto)}
+              disabled={downloading === activeLightboxPhoto.id}
+              className="w-11 h-11 rounded-full bg-brand-600/80 hover:bg-brand-600 text-white flex items-center justify-center transition-colors"
+              title="Bu fotoğrafı indir"
+            >
+              {downloading === activeLightboxPhoto.id
+                ? <Loader2 className="w-4 h-4 animate-spin" />
+                : <Download className="w-4 h-4" />}
+            </button>
+            {/* Delete */}
+            <button
+              onClick={() => { setLightbox(null); setDeleteTarget(activeLightboxPhoto) }}
+              className="w-11 h-11 rounded-full bg-rose-600/80 hover:bg-rose-600 text-white flex items-center justify-center transition-colors"
+              title="Bu fotoğrafı sil"
+            >
+              <Trash2 className="w-4 h-4" />
+            </button>
+          </div>
 
           {/* Prev */}
           <button
@@ -299,6 +363,62 @@ export default function CustomerEventGallery({ event, photos }: { event: any; ph
           >
             <ChevronRight className="w-6 h-6" />
           </button>
+        </div>
+      )}
+
+      {/* ── Delete Confirmation Modal ── */}
+      {deleteTarget && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-sm overflow-hidden">
+            {/* Photo preview */}
+            <div className="relative h-48 bg-slate-100 overflow-hidden">
+              <img
+                src={photoUrl(deleteTarget.storage_path)}
+                alt={deleteTarget.uploader_name}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+              <div className="absolute bottom-3 left-4">
+                <p className="text-white text-sm font-semibold">{deleteTarget.uploader_name}</p>
+                <p className="text-white/70 text-xs">{formatDateTime(deleteTarget.created_at)}</p>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center shrink-0">
+                  <AlertTriangle className="w-5 h-5 text-rose-500" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-900">Fotoğrafı sil</h3>
+                  <p className="text-xs text-slate-500">Bu işlem geri alınamaz</p>
+                </div>
+              </div>
+              <p className="text-sm text-slate-600 mb-6">
+                Bu fotoğraf kalıcı olarak silinecek ve galeride bir daha görünmeyecek. Emin misiniz?
+              </p>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setDeleteTarget(null)}
+                  className="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 text-slate-700 text-sm font-semibold hover:bg-slate-50 transition-colors"
+                >
+                  İptal
+                </button>
+                <button
+                  onClick={() => handleDelete(deleteTarget)}
+                  disabled={deleting === deleteTarget.id}
+                  className="flex-1 px-4 py-2.5 rounded-xl bg-rose-500 hover:bg-rose-600 text-white text-sm font-semibold transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
+                >
+                  {deleting === deleteTarget.id ? (
+                    <><Loader2 className="w-4 h-4 animate-spin" /> Siliniyor...</>
+                  ) : (
+                    <><Trash2 className="w-4 h-4" /> Evet, Sil</>
+                  )}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>
