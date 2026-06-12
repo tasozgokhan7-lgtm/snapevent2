@@ -1,4 +1,5 @@
 import { Mail, UserCheck, QrCode, Images } from 'lucide-react'
+import Reveal from '@/components/ui/Reveal'
 
 const steps = [
   {
@@ -40,17 +41,19 @@ export default function HowItWorksSection() {
     <section id="nasil-calisir" className="py-24 bg-gradient-to-br from-slate-50 to-brand-50/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 text-slate-600 text-sm font-medium mb-4">
-            Nasıl Çalışır?
+        <Reveal>
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 text-slate-600 text-sm font-medium mb-4">
+              Nasıl Çalışır?
+            </div>
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">
+              4 Adımda <span className="gradient-text">Mükemmel Galeri</span>
+            </h2>
+            <p className="text-lg text-slate-500 max-w-2xl mx-auto">
+              Siz sadece bir e-posta atın — gerisini biz halledelim. Misafirleriniz hiçbir teknik bilgiye ihtiyaç duymadan anında fotoğraf paylaşır.
+            </p>
           </div>
-          <h2 className="text-4xl font-bold text-slate-900 mb-4">
-            4 Adımda <span className="gradient-text">Mükemmel Galeri</span>
-          </h2>
-          <p className="text-lg text-slate-500 max-w-2xl mx-auto">
-            Siz sadece bir e-posta atın — gerisini biz halledelim. Misafirleriniz hiçbir teknik bilgiye ihtiyaç duymadan anında fotoğraf paylaşır.
-          </p>
-        </div>
+        </Reveal>
 
         {/* Steps */}
         <div className="relative">
@@ -59,7 +62,7 @@ export default function HowItWorksSection() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {steps.map(({ step, icon: Icon, title, desc, color, detail }, i) => (
-              <div key={step} className="relative flex flex-col items-center text-center group">
+              <Reveal key={step} delay={i * 130} className="relative flex flex-col items-center text-center group">
                 {/* Icon */}
                 <div className="relative mb-6">
                   <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${color} flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform z-10 relative`}>
@@ -75,13 +78,14 @@ export default function HowItWorksSection() {
                 <span className="inline-flex items-center px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-medium text-slate-600 shadow-sm">
                   {detail}
                 </span>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
 
         {/* CTA strip */}
-        <div className="mt-16 bg-gradient-to-r from-brand-600 to-rose-500 rounded-3xl p-8 md:p-12">
+        <Reveal direction="scale">
+        <div className="mt-16 bg-gradient-to-r from-brand-600 to-rose-500 rounded-3xl p-8 md:p-12 hover:shadow-2xl transition-shadow">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
@@ -108,6 +112,7 @@ export default function HowItWorksSection() {
             </div>
           </div>
         </div>
+        </Reveal>
       </div>
     </section>
   )

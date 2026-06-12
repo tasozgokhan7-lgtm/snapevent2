@@ -5,6 +5,7 @@ import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import Textarea from '@/components/ui/Textarea'
 import { CheckCircle, Mail } from 'lucide-react'
+import Reveal from '@/components/ui/Reveal'
 
 export default function ContactSection() {
   const [form, setForm] = useState({ name: '', email_or_phone: '', event_type: '', event_date: '', note: '' })
@@ -54,6 +55,7 @@ export default function ContactSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Left */}
+          <Reveal direction="left">
           <div>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-50 border border-brand-100 text-brand-600 text-sm font-medium mb-6">
               İletişim
@@ -96,9 +98,11 @@ export default function ContactSection() {
               ))}
             </div>
           </div>
+          </Reveal>
 
           {/* Right - Form */}
-          <div className="bg-white rounded-3xl border border-slate-100 shadow-xl p-8">
+          <Reveal direction="right" delay={120}>
+          <div className="bg-white rounded-3xl border border-slate-100 shadow-xl p-8 hover:shadow-2xl transition-shadow">
             {success ? (
               <div className="flex flex-col items-center text-center py-8 gap-4">
                 <div className="w-16 h-16 rounded-full bg-emerald-50 flex items-center justify-center">
@@ -136,6 +140,7 @@ export default function ContactSection() {
               </form>
             )}
           </div>
+          </Reveal>
         </div>
       </div>
     </section>

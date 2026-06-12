@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import Reveal from '@/components/ui/Reveal'
 
 const faqs = [
   {
@@ -36,19 +37,22 @@ export default function FaqSection() {
   return (
     <section className="py-24 bg-slate-50">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 text-slate-600 text-sm font-medium mb-4">
-            Sık Sorulan Sorular
+        <Reveal>
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 text-slate-600 text-sm font-medium mb-4">
+              Sık Sorulan Sorular
+            </div>
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">
+              Aklınızdaki <span className="gradient-text">Sorular</span>
+            </h2>
+            <p className="text-slate-500">Her şey açık ve net. Başka sorunuz varsa bize ulaşın.</p>
           </div>
-          <h2 className="text-4xl font-bold text-slate-900 mb-4">
-            Aklınızdaki <span className="gradient-text">Sorular</span>
-          </h2>
-          <p className="text-slate-500">Her şey açık ve net. Başka sorunuz varsa bize ulaşın.</p>
-        </div>
+        </Reveal>
 
         <div className="space-y-3">
           {faqs.map((faq, i) => (
-            <div key={i} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+            <Reveal key={i} delay={i * 60}>
+            <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden hover:shadow-md hover:border-brand-100 transition-all">
               <button
                 className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-slate-50 transition-colors"
                 onClick={() => setOpen(open === i ? null : i)}
@@ -62,6 +66,7 @@ export default function FaqSection() {
                 </div>
               )}
             </div>
+            </Reveal>
           ))}
         </div>
       </div>

@@ -1,4 +1,5 @@
 ﻿import { QrCode, Upload, ImageIcon, Shield, Zap, Heart } from 'lucide-react'
+import Reveal from '@/components/ui/Reveal'
 
 const features = [
   {
@@ -50,28 +51,32 @@ export default function FeaturesSection() {
     <section id="ozellikler" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-50 border border-brand-100 text-brand-600 text-sm font-medium mb-4">
-            Özellikler
+        <Reveal>
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-50 border border-brand-100 text-brand-600 text-sm font-medium mb-4">
+              Özellikler
+            </div>
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">
+              Etkinliğinizi <span className="gradient-text">Olağanüstü</span> Kılan Özellikler
+            </h2>
+            <p className="text-lg text-slate-500 max-w-2xl mx-auto">
+              Hatıra Topla ile etkinliğinizdeki her kişi fotoğraf paylaşabilir, ortak galeri oluşur ve hiçbir an kaybolmaz.
+            </p>
           </div>
-          <h2 className="text-4xl font-bold text-slate-900 mb-4">
-            Etkinliğinizi <span className="gradient-text">Olağanüstü</span> Kılan Özellikler
-          </h2>
-          <p className="text-lg text-slate-500 max-w-2xl mx-auto">
-            Hatıra Topla ile etkinliğinizdeki her kişi fotoğraf paylaşabilir, ortak galeri oluşur ve hiçbir an kaybolmaz.
-          </p>
-        </div>
+        </Reveal>
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map(({ icon: Icon, title, desc, color, bg }) => (
-            <div key={title} className="group p-8 rounded-2xl border border-slate-100 hover:border-brand-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${color} flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 transition-transform`}>
-                <Icon className="w-7 h-7 text-white" />
+          {features.map(({ icon: Icon, title, desc, color, bg }, i) => (
+            <Reveal key={title} delay={(i % 3) * 100}>
+              <div className="group h-full p-8 rounded-2xl border border-slate-100 hover:border-brand-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5">
+                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${color} flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300`}>
+                  <Icon className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">{title}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
               </div>
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">{title}</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
