@@ -8,6 +8,7 @@ import EventTypesSection from '@/components/landing/EventTypesSection'
 import WhyUsSection from '@/components/landing/WhyUsSection'
 import FaqSection from '@/components/landing/FaqSection'
 import ContactSection from '@/components/landing/ContactSection'
+import WhatsAppButton from '@/components/public/WhatsAppButton'
 
 export const metadata: Metadata = {
   title: 'Hatıra Topla — Düğün ve Etkinlik Fotoğraf Paylaşım Platformu',
@@ -131,6 +132,7 @@ export default function HomePage() {
         <FaqSection />
         <ContactSection />
         <Footer />
+        <WhatsAppButton />
       </main>
     </>
   )
